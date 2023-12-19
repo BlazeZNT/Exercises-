@@ -85,20 +85,35 @@ const fruit = [
 
 function search(str) {
 	let newUpper = str.toLowerCase();
+	// changes the user input to lowercase to make sure it can relate to the values in the array
 	console.log(newUpper);
 	return fruit.filter((val) => val.toLowerCase().includes(newUpper));
-	// TODO
+	// this function is used to check if the fruit array contains user input
 }
 
 function searchHandler(e) {
 	let results = search(input.value);
+	showSuggestions(results, input.value);
+	// run the function search
 	console.log(results);
 
 	// TODO
 }
 
 function showSuggestions(results, inputVal) {
-	// TODO
+	suggestions.innerHTML = "";
+	// to make sure there is nothing in the list already
+	if (inputVal === "" || results.length === 0) {
+		return;
+	} else {
+		let newul = document.createElement("ul");
+		for (let i of results) {
+			let newli = document.createElement("li");
+			newli.innerText = i;
+			newul.appendChild(newli);
+		}
+		suggestions.appendChild(newul);
+	}
 }
 
 function useSuggestion(e) {
