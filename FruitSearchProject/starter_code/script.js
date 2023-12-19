@@ -110,6 +110,8 @@ function showSuggestions(results, inputVal) {
 		for (let i of results) {
 			let newli = document.createElement("li");
 			newli.innerText = i;
+			newli.classList.add("suggestions");
+
 			newul.appendChild(newli);
 		}
 		suggestions.appendChild(newul);
@@ -117,7 +119,8 @@ function showSuggestions(results, inputVal) {
 }
 
 function useSuggestion(e) {
-	// TODO
+	input.value = e.target.innerText;
+	suggestions.innerHTML = "";
 }
 
 input.addEventListener("keyup", searchHandler);
