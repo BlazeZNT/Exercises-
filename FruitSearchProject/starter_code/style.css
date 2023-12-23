@@ -31,23 +31,11 @@ input {
 	height: 30px;
 	padding: 0px;
 }
-.search-container input,
-.search-container .suggestions {
-	/* TODO */
-}
-.search-container input {
-}
-.search-container .suggestions {
-	/* TODO */
-}
 
 ul {
 	list-style-type: none;
-	/* TODO */
 }
-ul.has-suggestions {
-	/* TODO */
-}
+
 ul li {
 	text-decoration: none;
 	width: 100%;
@@ -68,8 +56,8 @@ ul li:hover {
 input:focus {
 	outline-style: none;
 	box-shadow: none;
+	background-color: lightcoral;
 }
 
-input {
-	/* TODO */
-}
+/* .suggestions { add background behind suggestions 
+} */
