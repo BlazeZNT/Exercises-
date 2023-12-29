@@ -41,9 +41,14 @@ class Garage {
 		if (vehicles.length >= capacity) {
 			return "Sorry, we're full";
 		} else if (
-			// check to see whether the object name are vehicles
-			val.constructor.name !== "Motorcycle" &&
-			val.constructor.name !== "Car"
+			!(
+				// check to see whether the object name are vehicles
+				// val.constructor.name !== "Motorcycle" &&
+				// val.constructor.name !== "Car"
+
+				// can also use instanceof
+				(val instanceof Vehicle)
+			)
 		) {
 			return "Only vehicles are allowed in here!";
 		}
