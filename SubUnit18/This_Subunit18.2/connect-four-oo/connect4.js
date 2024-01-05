@@ -171,13 +171,15 @@
 // makeHtmlBoard();
 
 class Game {
-	constructor(HEIGHT = 6, WIDTH = 7) {
+	constructor(p1, p2, HEIGHT = 6, WIDTH = 7) {
 		this.HEIGHT = HEIGHT;
 		this.WIDTH = WIDTH;
-		this.currPlayer = 1;
+		this.player = [p1, p2];
+		this.currPlayer = p1;
 		this.makeBoard();
 		this.makeHtmlBoard();
 	}
+
 	makeBoard() {
 		this.board = [];
 		for (let y = 0; y < this.HEIGHT; y++) {
@@ -190,11 +192,14 @@ class Game {
 	makeHtmlBoard() {
 		const { HEIGHT, WIDTH } = this;
 		const board = document.getElementById("board");
+		board.innerHTML = "";
+		// Do this to make sure another table is not created if there is a previous table
 
 		// make column tops (clickable area for adding a piece to that column)
 		const top = document.createElement("tr");
 		top.setAttribute("id", "column-top");
-		top.addEventListener("click", this.handleClick.bind(this));
+		this.handleGame = this.handleClick.bind(this);
+		top.addEventListener("click", this.handleGame);
 
 		for (let x = 0; x < WIDTH; x++) {
 			const headCell = document.createElement("td");
@@ -234,7 +239,7 @@ class Game {
 	placeInTable(y, x) {
 		const piece = document.createElement("div");
 		piece.classList.add("piece");
-		piece.classList.add(`p${this.currPlayer}`);
+		piece.style.backgroundColor = this.currPlayer.color;
 		piece.style.top = -50 * (y + 2);
 
 		const spot = document.getElementById(`${y}-${x}`);
@@ -245,6 +250,8 @@ class Game {
 
 	endGame(msg) {
 		alert(msg);
+		const top = document.querySelector("#column-top");
+		top.removeEventListener("click", this.handleGame);
 	}
 
 	/** handleClick: handle click of column top to play piece */
@@ -265,7 +272,7 @@ class Game {
 
 		// check for win
 		if (this.checkForWin()) {
-			return this.endGame(`Player ${this.currPlayer} won!`);
+			return this.endGame(`Player ${this.currPlayer.color} won!`);
 		}
 
 		// check for tie
@@ -274,7 +281,8 @@ class Game {
 		}
 
 		// switch players
-		this.currPlayer = this.currPlayer === 1 ? 2 : 1;
+		this.currPlayer =
+			this.currPlayer === this.player[0] ? this.player[1] : this.player[0];
 	}
 
 	/** checkForWin: check board cell-by-cell for "does a win start here?" */
@@ -333,4 +341,16 @@ class Game {
 	}
 }
 
-new Game(6, 7); // assuming constructor takes height, width
+class Player {
+	constructor(color) {
+		this.color = color;
+	}
+}
+let gameStart = document.querySelector("#gameStart");
+gameStart.addEventListener("click", () => {
+	let p1 = new Player(document.querySelector("#pl1").value);
+	let p2 = new Player(document.querySelector("#pl2").value);
+	console.log(p1);
+	new Game(p1, p2);
+});
+// assuming constructor takes height, width
