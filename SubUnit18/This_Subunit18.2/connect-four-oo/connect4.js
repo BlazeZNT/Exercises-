@@ -241,7 +241,6 @@ class Game {
 		piece.classList.add("piece");
 		piece.style.backgroundColor = this.currPlayer.color;
 		piece.style.top = -50 * (y + 2);
-
 		const spot = document.getElementById(`${y}-${x}`);
 		spot.append(piece);
 	}
@@ -272,7 +271,7 @@ class Game {
 
 		// check for win
 		if (this.checkForWin()) {
-			return this.endGame(`Player ${this.currPlayer.color} won!`);
+			return this.endGame(`${this.currPlayer.color} Player won!`);
 		}
 
 		// check for tie
