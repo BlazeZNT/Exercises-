@@ -1,0 +1,33 @@
+NUMBER 1
+HTTP is a hypertext transfer protocal and is the foundation of data exchange on the Web. It help directs how data form and to the server from the client 
+
+NUMBER 2 
+URL is a Uniform resource that acts as the address of a internet
+
+NUMBER 3
+DNS is called the domain name server and is responsible for associating and converting webiste name to IP addresses.
+
+NUMBER 4
+a query string helps assess value to specific parameters and is included at the end of a URL after ? with key value pairs.
+
+NUMBER 5 
+
+GET : gets data from the server
+Post : sets data in the server with occuring changes.
+
+NUMBER 6
+An HTTP request is the request send to a server from a client to ask for information 
+
+NUMBER 7 
+An HTTP response is the response given by the server to the client
+
+NUMBER 8
+A header is somethig that provides extra information regarding the request or the response. Some Example could be 
+Request Headers :  date , content-length 
+Response Headers : content-type , date
+
+NUMBER 9
+1. the readle name is turned into an IP address using the DNS.
+2. Then the browser make a request and sends it to the IP address 
+3. A reponse is then provided by the server 
+4. then using the HTML provided in the response body, the browswer thens changes and displays all the values including css , js and etc.

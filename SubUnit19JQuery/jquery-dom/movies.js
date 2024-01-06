@@ -15,6 +15,7 @@ $(document).ready(function () {
 
 			const movie = $(".movDiv input").val();
 			const rating = $(".ratDiv input").val();
+			
 			$(
 				`<li>${movie} is rated ${rating} <button>Delete</button></li>`
 			).appendTo("ol");
